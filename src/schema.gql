@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Book {
+  _id: ID!
+  author: String!
+  createdAt: DateTime!
+  description: String
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateBookDto {
+  author: String!
+  description: String
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createBook(input: CreateBookDto!): Book!
+  deleteBook(id: String!): Book!
+  restoreBook(id: String!): Book!
+  softDeleteBook(id: String!): Book!
+  updateBook(id: String!, input: UpdateBookDto!): Book!
+}
+
+type Query {
+  getAllBooks(author: String, limit: Float, page: Float, search: String, sort: String): [Book!]!
+  getBook(id: String!): Book!
+}
+
+input UpdateBookDto {
+  _id: ID!
+  author: String
+  createdAt: String!
+  description: String
+  title: String
+}
